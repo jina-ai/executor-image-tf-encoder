@@ -38,10 +38,9 @@ class ImageTFEncoder(Executor):
             output of the last convolutional block, and thus the output of
             the model will be a 2D tensor.
         - `max`: Means that global max pooling will be applied.
-
-    :param channel_axis: the axis id of the channel, -1 indicate the color channel
-        info at the last axis. If given other, then ``np.moveaxis(content, channel_axis, -1)``
-        is performed before :meth:`encode`.
+    :param default_batch_size: size of each batch
+    :param default_traversal_paths: traversal path of the Documents, (e.g. 'r', 'c')
+    :param on_gpu: set to True if using GPU
     :param args: additional positional arguments.
     :param kwargs: additional positional arguments.
     """
@@ -50,7 +49,6 @@ class ImageTFEncoder(Executor):
                  model_name: str = 'MobileNetV2',
                  img_shape: int = 336,
                  pool_strategy: str = 'max',
-                 channel_axis: int = 1,
                  default_batch_size: int = 32,
                  default_traversal_paths: List[str] = ['r'],
                  on_gpu: bool = False,
@@ -60,7 +58,6 @@ class ImageTFEncoder(Executor):
         self.model_name = model_name
         self.pool_strategy = pool_strategy
         self.img_shape = img_shape
-        self.channel_axis = channel_axis
         self.default_batch_size = default_batch_size
         self.default_traversal_paths = default_traversal_paths
         self.on_gpu = on_gpu
