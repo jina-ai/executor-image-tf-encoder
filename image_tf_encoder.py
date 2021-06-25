@@ -51,7 +51,7 @@ class ImageTFEncoder(Executor):
                  pool_strategy: str = 'max',
                  default_batch_size: int = 32,
                  default_traversal_paths: List[str] = ['r'],
-                 on_gpu: bool = False,
+                 on_gpu: bool = True,
                  *args,
                  **kwargs):
         super().__init__(*args, **kwargs)

@@ -20,7 +20,8 @@ def test_encoding_results():
     for i in range(num_doc):
         doc.append(Document(blob=test_data[i]))
 
-    encoder = BaseExecutor.load_config('../../config.yml')
+    encoder = BaseExecutor.load_config(
+        os.path.join(directory, '../../config.yml'))
     encoder.encode(doc, parameters={})
     assert len(doc) == num_doc
     for i in range(num_doc):
@@ -29,7 +30,8 @@ def test_encoding_results():
 
 def test_image_results(test_images: Dict[str, np.array]):
     embeddings = {}
-    encoder = BaseExecutor.load_config('../../config.yml')
+    encoder = BaseExecutor.load_config(
+        os.path.join(directory, '../../config.yml'))
     for name, image_arr in test_images.items():
         docs = DocumentArray([Document(blob=image_arr)])
         encoder.encode(docs, parameters={})
