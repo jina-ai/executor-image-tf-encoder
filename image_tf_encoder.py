@@ -50,11 +50,13 @@ class ImageTFEncoder(Executor):
                  img_shape: int = 336,
                  pool_strategy: str = 'max',
                  default_batch_size: int = 32,
-                 default_traversal_paths: List[str] = ['r'],
+                 default_traversal_paths: List[str] = None,
                  on_gpu: bool = True,
                  *args,
                  **kwargs):
         super().__init__(*args, **kwargs)
+        if default_traversal_paths is None:
+            default_traversal_paths = ['r']
         self.model_name = model_name
         self.pool_strategy = pool_strategy
         self.img_shape = img_shape
@@ -87,8 +89,7 @@ class ImageTFEncoder(Executor):
         Encode document content into a ndarray of `B x D`. `
         B` is the batch size and `D` is the Dimension.
 
-        :param content: Image to be encoded, expected a `np.ndarray` of
-            BatchSize x (Channel x Height x Width).
+        :param docs: DocumentArray containing blob as image data.
         :param args: additional positional arguments.
         :param kwargs: additional positional arguments.
         :return: Encoded result as a `BatchSize x D` numpy ``ndarray``,
