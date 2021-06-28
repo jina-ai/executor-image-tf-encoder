@@ -1,12 +1,7 @@
-# 📝 PLEASE READ [THE GUIDELINES](.github/GUIDELINES.md) BEFORE STARTING.
+# ✨ ImageTFEncoder
 
-# 🏗️ PLEASE CHECK OUT [STEP-BY-STEP](.github/STEP_BY_STEP.md)
+`ImageTFEncoder` encodes ``Document`` content from a ndarray, potentially BatchSize x (Height x Width x Channel) into a ndarray of `BatchSize * d`. Internally, :class:`ImageTFEncoder` wraps the models from `tensorflow.keras.applications`. https://keras.io/applications/
 
-----
-
-# ✨ MyDummyExecutor
-
-**MyDummyExecutor** is a class that ...
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -33,7 +28,7 @@ Use the prebuilt images from JinaHub in your python codes,
 ```python
 from jina import Flow
 	
-f = Flow().add(uses='jinahub+docker://MyDummyExecutor')
+f = Flow().add(uses='jinahub+docker://ImageTFEncoder')
 ```
 
 or in the `.yml` config.
@@ -42,7 +37,7 @@ or in the `.yml` config.
 jtype: Flow
 pods:
   - name: encoder
-    uses: 'jinahub+docker://MyDummyExecutor'
+    uses: 'jinahub+docker://ImageTFEncoder'
 ```
 
 #### using source codes
@@ -51,7 +46,7 @@ Use the source codes from JinaHub in your python codes,
 ```python
 from jina import Flow
 	
-f = Flow().add(uses='jinahub://MyDummyExecutor')
+f = Flow().add(uses='jinahub://ImageTFEncoder')
 ```
 
 or in the `.yml` config.
@@ -60,25 +55,25 @@ or in the `.yml` config.
 jtype: Flow
 pods:
   - name: encoder
-    uses: 'jinahub://MyDummyExecutor'
+    uses: 'jinahub://ImageTFEncoder'
 ```
 
 
 ### 📦️ Via Pypi
 
-1. Install the `jinahub-MY-DUMMY-EXECUTOR` package.
+1. Install the `executor-image-tf-encoder` package.
 
 	```bash
-	pip install git+https://github.com/jina-ai/EXECUTOR_REPO_NAME.git
+	pip install git+https://github.com/jina-ai/executor-image-tf-encoder
 	```
 
 1. Use `jinahub-MY-DUMMY-EXECUTOR` in your code
 
 	```python
 	from jina import Flow
-	from jinahub.SUB_PACKAGE_NAME.MODULE_NAME import MyDummyExecutor
+	from jinahub.encoder.image_tf_encoder import ImageTFEncoder
 	
-	f = Flow().add(uses=MyDummyExecutor)
+	f = Flow().add(uses=ImageTFEncoder)
 	```
 
 
@@ -87,17 +82,17 @@ pods:
 1. Clone the repo and build the docker image
 
 	```shell
-	git clone https://github.com/jina-ai/EXECUTOR_REPO_NAME.git
-	cd EXECUTOR_REPO_NAME
-	docker build -t my-dummy-executor-image .
+	git clone https://github.com/jina-ai/executor-image-tf-encoder
+	cd executor-image-tf-encoder
+	docker build -t executor-image-tf-encoder .
 	```
 
-1. Use `my-dummy-executor-image` in your codes
+1. Use `executor-image-tf-encoder` in your codes
 
 	```python
 	from jina import Flow
 	
-	f = Flow().add(uses='docker://my-dummy-executor-image:latest')
+	f = Flow().add(uses='docker://executor-image-tf-encoder:latest')
 	```
 	
 
@@ -107,7 +102,7 @@ pods:
 ```python
 from jina import Flow, Document
 
-f = Flow().add(uses='jinahub+docker://MyDummyExecutor')
+f = Flow().add(uses='jinahub+docker://ImageTFEncoder')
 
 with f:
     resp = f.post(on='foo', inputs=Document(), return_results=True)
@@ -121,8 +116,3 @@ with f:
 ### Returns
 
 `Document` with `embedding` fields filled with an `ndarray` of the shape `embedding_dim` (=128, by default) with `dtype=nfloat32`.
-
-
-## 🔍️ Reference
-- Some reference
-

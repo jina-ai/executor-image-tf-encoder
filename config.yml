@@ -1,4 +1,4 @@
-jtype: MyDummyExecutor
+jtype: ImageTFEncoder
 metas:
   py_modules:
-    - MODULE_NAME.py
+    - image_tf_encoder.py
