@@ -15,12 +15,12 @@ def _batch_generator(data: List[Any], batch_size: Optional[int]):
 
 class ImageTFEncoder(Executor):
     """
-    :class:`ImageKerasEncoder` encodes ``Document`` content from a ndarray,
-    potentially B x (Channel x Height x Width) into a ndarray of `B x D`.
+    :class:`ImageTFEncoder` encodes ``Document`` content from a ndarray,
+    potentially B x (Height x Width x Channel) into a ndarray of `B x D`.
 
     Where `B` is the batch size and `D` is the Dimension.
 
-    The :class:`ImageKerasEncoder` wraps the models from
+    The :class:`ImageTFEncoder` wraps the models from
     `tensorflow.keras.applications`. <https://keras.io/applications/>`_.
 
     :param model_name: the name of the model. Supported models include
