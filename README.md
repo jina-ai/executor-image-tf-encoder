@@ -67,7 +67,7 @@ pods:
 	pip install git+https://github.com/jina-ai/executor-image-tf-encoder
 	```
 
-1. Use `jinahub-MY-DUMMY-EXECUTOR` in your code
+1. Use `jinahub-executor-image-tf-encoder` in your code
 
 	```python
 	from jina import Flow
